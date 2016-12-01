@@ -1,7 +1,7 @@
 
 public class Card {
 	
-	public String suit;
+	private String suit;
 	
 	/**
 	 * 
