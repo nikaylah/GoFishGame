@@ -20,6 +20,7 @@ public class Deck{
 				deck.add(new Card(suit[i]));//adds the card to the deck array list
 			}
 		}
+		shuffle();
 		
 	}
 	
