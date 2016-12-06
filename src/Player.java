@@ -19,9 +19,15 @@ public class Player {
 	}
 	
 	public Card getCard(Card c){//gets the card--first check to see in the hand contains it then removes and returns
-		if(hand.contains(c)){
-			hand.remove(c);
-			return c;
+		if(contains(c)){
+			for(int i = 0; i < hand.size(); i ++)
+			{
+				if(hand.get(i).getSuit().equals(c.getSuit()))
+				{
+					hand.remove(i);
+					return c;
+				}
+			}
 		}
 		//else
 		return null;
@@ -30,6 +36,20 @@ public class Player {
 	public void giveCard(Card c){//adds the new given card to the hand
 		hand.add(c);
 	}
+	
+	public boolean contains(Card c){
+		for(int i = 0; i < hand.size(); i ++)
+		{
+			if(hand.get(i).getSuit().equals(c.getSuit()))
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+//	public char play(){
+//		
+//	}
 	public String toString(){
 		return hand.toString();
 	}
