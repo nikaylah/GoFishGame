@@ -91,29 +91,7 @@ public class Controller {
 				System.out.println(p1.getHand());
 			}
 		}
-
-			
-		//create exceptions for (if they hit the keyboard) the user input
-//		Scanner input = new Scanner(System.in);
-		//int input = 0;
-//		s = input.next();)
-//		System.out.println(" Play(1) or Put Down Matches(2)?: " );
-//		String play;   //scanner.nextLine();
-//		String discard; //scanner.nextLine();
-//		
-//		input = scanner.nextInt();
-//		
-//		
-//		if (input == 1)
-//		{
-//			System.out.println("Let " + " play");
-//		}
-//		System.out.println("Play" + play);
-//		System.out.println("Discard" + discard);
-		
-		
-		
-		
+	
 	}
 	
 
