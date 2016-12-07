@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 public class DiscardPile {
 
-	public ArrayList<Card> deck = new ArrayList<Card>();
+	public ArrayList<Card> discard = new ArrayList<Card>();
 	
 	
 	
 	public String toString(){
-		return deck.toString();
+		return discard.toString();
 	}
 }

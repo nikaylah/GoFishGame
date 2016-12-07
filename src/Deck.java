@@ -34,11 +34,12 @@ public class Deck{
 		return deck.remove(0);//gets the top card from the deck and returns that card that was removed
 	}
 	
-	public ArrayList<Card> dealHand(){
+	public ArrayList<Card> dealHand()//these are not connected to player
+	{
 		ArrayList<Card> hand = new ArrayList<Card>();//creating a new array list of cards called hand
-		for(int i = 0; i < 6 ; i++){//goes through the loop 6 times for 6 cards
-		hand.add(deck.remove(0));//creates a new array list and adds the top card to the hand---6 times = 6 cards
-		
+		for(int i = 0; i < 6 ; i++)//goes through the loop 6 times for 6 cards
+		{
+			hand.add(deck.remove(0));//creates a new array list and adds the top card to the hand---6 times = 6 cards //player.add
 		}
 		
 		return hand;//returns the 6 cards that should now be in the hand
