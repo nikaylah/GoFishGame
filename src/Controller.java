@@ -82,7 +82,6 @@ public class Controller {
 				
 				p1Score ++;
 				
-				System.out.println();
 				System.out.println(p1.getHand());
 			}
 		}
