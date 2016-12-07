@@ -51,7 +51,7 @@ public class Controller {
 		int location1;
 		int location2;
 	
-		if(answer.equals("play")){
+		if(answer.equals("play")){//The Play
 			System.out.println("Which card?(Type a location)"); 
 			System.out.print(p1.getHand());
 			location = input.nextInt();
@@ -67,11 +67,11 @@ public class Controller {
 			else
 			{
 			System.out.println("Player 2 says 'Go Fish'");
-			p1.giveCard(d1.getCard());
+			p1.giveCard(d1.getCard());//player 1 draws from deck
 			}
 			
 		}
-		else
+		else//(Putting down matches)
 		{
 			System.out.println("Which 2 cards (Type in first Location) ");
 			System.out.print(p1.getHand());
