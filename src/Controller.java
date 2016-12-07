@@ -84,6 +84,7 @@ public class Controller {
 				
 				System.out.println();
 				System.out.println(p1.getHand());
+				System.out.println("Player 1 score: " + p1Score);
 			}
 		}
 	
