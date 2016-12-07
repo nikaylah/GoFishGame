@@ -27,32 +27,25 @@ public class Controller {
 		p1.setHand(d1.dealHand());
 		p2.setHand(d1.dealHand());
 		
-		System.out.println("player 1: " + p1);
-		System.out.println("player 2: " + p2);
+		System.out.println();
+		System.out.println("PLAYER 1 HAND: " + p1);
+		System.out.println("PLAYER 2 HAND: " + p2);
 		
 		System.out.println();
-		System.out.println("Start");
+		System.out.println("------DO YOU WANT TO PLAY OR PUT DOWN YOUR MATCHES?------");
+		System.out.println("------TYPE (play) or (matches)-----");
 		
 		
-		//create a print player that shows each persons card so that we know who is winning---looping construct
-		System.out.println();
-		System.out.print("Randomly Testing the size: " + d1.getSize());
-		
-		System.out.println();
-		System.out.println("------------------------------------------------------");
-		System.out.println("-----Play or Put Down Matches?------");
-		
-		
-		String answer;
-		int location;
 		Scanner input = new Scanner(System.in);
+		String answer;
 		answer = input.next();
+		int location;
 		
-		int location1;
+		int location1;//used for keeping track of matches
 		int location2;
 	
 		if(answer.equals("play")){//The Play
-			System.out.println("Which card?(Type a location)"); 
+			System.out.println("---Which card?(Type a location)----"); 
 			System.out.print(p1.getHand());
 			location = input.nextInt();
 			Card card = p1.getHand().get(location - 1);
@@ -71,13 +64,14 @@ public class Controller {
 			}
 			
 		}
-		else//(Putting down matches)
+		else if(answer.equals("matches"))//(Putting down matches)
 		{
-			System.out.println("Which 2 cards (Type in first Location) ");
+			System.out.println("------Which 2 cards -----");
+			System.out.println("------(Type in first Location)------");
 			System.out.print(p1.getHand());
 			location1 = input.nextInt();
 			Card c1 = p1.getHand().get(location1 -1);
-			System.out.println("Which 2 cards (Type in second Location) ");
+			System.out.println("-------(Type in second Location)------- ");
 			System.out.print(p1.getHand());
 			location2 = input.nextInt();
 			Card c2 = p1.getHand().get(location2 -1);
