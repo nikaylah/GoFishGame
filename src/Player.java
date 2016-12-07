@@ -30,9 +30,6 @@ public abstract class Player {
 				
 	}
 	
-	public boolean contains(Card c) {
-		return hand.contains(c);
-	}
 	
 	public Card getCard(Card c){//gets the card--first check to see in the hand contains it then removes and returns
 		if(contains(c)){

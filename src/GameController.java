@@ -29,8 +29,6 @@ public class GameController {
 
 		Deck d1 = new Deck();
 		
-		int p1Score = 0;
-		int p2Score = 0;
 		
 		//deal the cards
 		for(int i = 0;i<players.length;i++) {
