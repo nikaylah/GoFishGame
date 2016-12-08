@@ -41,7 +41,7 @@ public class Bot extends Player {
 		}
 		
 		boolean willPlay = r1.nextInt() % 2 == 0;
-		return willPlay ? 1 : 0 | chosenPlayer << 1 | chosenCard << 3;
+		return willPlay ? 1 : 0 | chosenPlayer << 1 | chosenCard << 3; //First bit indicates willPlay true or false (1 or 0), next 2 bits represent the player number (requires only 2 bits since there can be a maximum of 4 players), the remaining bits indicate the chosen card.
 	}
 
 }

@@ -18,10 +18,10 @@ public class GameController {
 			int type = Integer.parseInt(input.nextLine());
 			switch(type) {
 			case 0:
-				players[i] = new Human();
+				players[i] = new Bot();
 				break;
 			case 1:
-				players[i] = new Bot();
+				players[i] = new Human();
 				break;
 			}
 			players[i].playerIndex = i;
@@ -56,12 +56,14 @@ public class GameController {
 		
 		// Have player take turn
 		int action = players[currentPlayer].play(input, players.length);
-		if((action & 1) != 0) {
+		
+		
+		if((action & 1) != 0) { //checks the rightmost bit. Anding this with a 1 checks that the rightmost bit is either a 1 or a zero. A nonzero value is returned if it is a 1.
 			//TODO: Properly extract bits here
 			// Rightmost bit is action flag (correct)
 			// Next bits are player number (2 bits)
 			/// card number (rest of integer value)
-			int playerno = (action >> 1) & ~(-1 >> 2);
+			int playerno = (action >> 1) & ~(-1 << 2); // To generate a mask to and with, pick the largest possible number we can represent (-1, which is all ones), shift it by the number of bits we want, and invert.
 			int cardno = (action >> 3);
 			Card card = players[currentPlayer].getHand().get(cardno);
 			System.out.println("Player "+currentPlayer+" plays a "+card.getSuit()+".");
