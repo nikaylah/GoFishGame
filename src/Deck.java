@@ -30,7 +30,9 @@ public class Deck{
 	}
 	
 	public Card getCard(){
-		
+		if(deck.size() == 0) {
+			return null;
+		}
 		return deck.remove(0);//gets the top card from the deck and returns that card that was removed
 	}
 	

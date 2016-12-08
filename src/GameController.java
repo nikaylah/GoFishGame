@@ -6,14 +6,21 @@ public class GameController {
 	public static void main(String[] args) {
 		//creates an array of players with a maximum of four players.
 		Scanner input = new Scanner(System.in);
+		Player[] players;
+		while(true) {
 		System.out.println("How many players do you want?");
-		Player[] players = new Player[Integer.parseInt(input.nextLine())];
+		players = new Player[Integer.parseInt(input.nextLine())];
 		if (players.length > 4) {
 			System.out.println("You cannot have more than 4 players.");
-			return;
+			
+
+		}else {
+			break;
 		}
+		}
+		
 		for (int i = 0; i < players.length; i++) {
-			System.out.println("Is player " + i + " a computer (0), or a person (1)? (Please type 0 or 1)");
+			System.out.println("Is player " + i + " a bot (0), or a person (1)? (Please type 0 or 1)");
 			int type = Integer.parseInt(input.nextLine());
 			switch (type) {
 			case 0:
@@ -38,9 +45,9 @@ public class GameController {
 
 		// create a print player that shows each persons card so that we know
 		// who is winning---looping construct
-		System.out.println();
+		
 		System.out.print("Randomly Testing the size: " + d1.getSize());
-
+		
 		int currentPlayer = 0;
 
 		while (true) {
@@ -80,6 +87,22 @@ public class GameController {
 					System.out.println("Congratulations! You guessed right!");
 				} else {
 					System.out.println("Go fish!");
+					//return deck.remove(0);
+					Card ocard = d1.getCard();
+					if(ocard == null) {
+						int maxScore = 0;
+						int winner = 0;
+						for(Player i:players) {
+							if(i.score>maxScore) {
+								maxScore = i.score;
+								winner = i.playerIndex;
+							}
+						}
+						System.out.println("Player "+(winner+1)+" wins the game with "+maxScore+" points.");
+						return;
+					}
+					players[currentPlayer].giveCard(ocard);
+					
 				}
 			} else {
 				System.out.println("Player " + currentPlayer + " decided to not take a turn.");
