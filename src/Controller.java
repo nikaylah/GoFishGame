@@ -31,7 +31,10 @@ public class Controller {
 		System.out.println("PLAYER 1 HAND: " + p1);
 		System.out.println("PLAYER 2 HAND: " + p2);
 		
+		//--------------------(Player 1 Go)----------------------------------
+		
 		System.out.println();
+		System.out.println("(Player 1)");
 		System.out.println("------DO YOU WANT TO PLAY OR PUT DOWN YOUR MATCHES?------");
 		System.out.println("------TYPE (play) or (matches)-----");
 		
@@ -43,7 +46,7 @@ public class Controller {
 		
 		int location1;//used for keeping track of matches
 		int location2;
-	
+	while(true){
 		if(answer.equals("play")){//The Play
 			System.out.println("---Which card?(Type a location)----"); 
 			System.out.print(p1.getHand());
@@ -87,8 +90,65 @@ public class Controller {
 				System.out.println("Player 1 score: " + p1Score);
 			}
 		}
+			
+			//Ignore everything below this...
+			//--------------------(Player 2 Go)----------------------------------
+			
+			System.out.println();
+			System.out.println("----------------------------(Player 2)----------------------------");
+			System.out.println("------DO YOU WANT TO PLAY OR PUT DOWN YOUR MATCHES?------");
+			System.out.println("------TYPE (play) or (matches)-----");
+			
+			
+			if(answer.equals("play")){//The Play
+				System.out.println("---Which card?(Type a location)----"); 
+				System.out.print(p1.getHand());
+				location = input.nextInt();
+				Card card = p1.getHand().get(location - 1);
+				System.out.println("Player 2 do you have this card " + card);
+				
+				if(p2.contains(card)){
+					p1.giveCard(p2.getCard(card));
+					
+					System.out.println(p1.getHand());
+					System.out.println(p2.getHand());
+				}
+				else
+				{
+				System.out.println("Player 2 says 'Go Fish'");
+				p1.giveCard(d1.getCard());//player 1 draws from deck
+				}
+				
+			}
+			else if(answer.equals("matches"))//(Putting down matches)
+			{
+				System.out.println("------Which 2 cards -----");
+				System.out.println("------(Type in first Location)------");
+				System.out.print(p1.getHand());
+				location1 = input.nextInt();
+				Card c3 = p1.getHand().get(location1 -1);
+				System.out.println("-------(Type in second Location)------- ");
+				System.out.print(p1.getHand());
+				location2 = input.nextInt();
+				Card c4 = p1.getHand().get(location2 -1);
+				
+				if(c3.getSuit().equals(c4.getSuit())){
+					p1.getCard(c3);
+					p1.getCard(c4);
+					
+					p1Score ++;
+					
+					System.out.println();
+					System.out.println(p1.getHand());
+					System.out.println("Player 1 score: " + p1Score);
+				}
+				
+				
+			}//end while
+				
+		}//end main
+	
+	}//end class
 	
 	}
-	
 
-}
