@@ -20,6 +20,7 @@ public class Deck{
 				deck.add(new Card(suit[i]));//adds the card to the deck array list
 			}
 		}
+		shuffle();
 		
 	}
 	
@@ -29,7 +30,9 @@ public class Deck{
 	}
 	
 	public Card getCard(){
-		
+		if(deck.size() == 0) {
+			return null;
+		}
 		return deck.remove(0);//gets the top card from the deck and returns that card that was removed
 	}
 	
@@ -53,4 +56,18 @@ public class Deck{
 		return deck.toString();
 	}
 
+	public boolean hasPair(String suit) {
+		
+		int counter=0;
+		for( int i =0; i< deck.size(); i++)
+		{
+			if(deck.get(i).equals(suit)){
+				counter++;
+		}
+			if(counter == 2){
+				return true;
+		}
+		}
+		return false;
+	}
 }
