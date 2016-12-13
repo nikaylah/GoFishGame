@@ -56,4 +56,18 @@ public class Deck{
 		return deck.toString();
 	}
 
+	public boolean hasPair(String suit) {
+		
+		int counter=0;
+		for( int i =0; i< deck.size(); i++)
+		{
+			if(deck.get(i).equals(suit)){
+				counter++;
+		}
+			if(counter == 2){
+				return true;
+		}
+		}
+		return false;
+	}
 }

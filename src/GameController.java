@@ -4,6 +4,8 @@ import java.util.Scanner;
 public class GameController {
 
 	public static void main(String[] args) {
+		
+		
 		//creates an array of players with a maximum of four players.
 		Scanner input = new Scanner(System.in);
 		Player[] players;
@@ -18,6 +20,7 @@ public class GameController {
 			break;
 		}
 		}
+		//while (true) {
 		
 		for (int i = 0; i < players.length; i++) {
 			System.out.println("Is player " + i + " a bot (0), or a person (1)? (Please type 0 or 1)");
@@ -32,6 +35,7 @@ public class GameController {
 			}
 			players[i].playerIndex = i;
 		}
+		
 
 		Deck d1 = new Deck();
 
@@ -42,19 +46,22 @@ public class GameController {
 
 		System.out.println();
 		System.out.println("Start");
+		System.out.println();
 
 		// create a print player that shows each persons card so that we know
 		// who is winning---looping construct
 		
-		System.out.print("Randomly Testing the size: " + d1.getSize());
+		System.out.print("Current size of the Deck: " + d1.getSize());
 		
 		int currentPlayer = 0;
 
 		while (true) {
-
+			
 			System.out.println();
+			System.out.println(" Below is a list of your cards: ");
+			System.out.println(players[currentPlayer].getHand()); //current hand
 			System.out.println("------------------------------------------------------");
-			System.out.println("-----Play or skip turn?------ (type either play or skip)");
+			System.out.println("-----Ready to Play?------");
 
 			// Have player take turn
 			int action = players[currentPlayer].play(input, players.length);
@@ -105,17 +112,21 @@ public class GameController {
 					
 				}
 			} else {
-				System.out.println("Player " + currentPlayer + " decided to not take a turn.");
-			}
-
+//				System.out.println("Player " + currentPlayer + " decided to not take a turn.");
+				
+				
+				
+		  //  players[currentPlayer].getHand().get(d1.hasPair(suit));
 			// Move to next player
+			
 			currentPlayer = (currentPlayer + 1) % players.length;
-
+			System.out.println(currentPlayer);
 			for (Player i : players) {
 				System.out.println("Player " + i.playerIndex + " has " + i.score + " points.");
 			}
 
-		}
+		}//end while
 	}
 
+}
 }

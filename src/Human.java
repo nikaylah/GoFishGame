@@ -5,7 +5,7 @@ public class Human extends Player {
 	@Override
 	public int play(Scanner scanner, int numberOfPlayers) {
 
-		System.out.println("Do you want to play a card (type 0), or skip your turn (type 1)?");
+		System.out.println("To play a card (type 0)");
 		if (scanner.nextLine().equals("0")) {
 			while (true) {
 
