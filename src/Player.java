@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public abstract class Player {
@@ -44,6 +45,29 @@ public abstract class Player {
 		}
 		//else
 		return null;
+	}
+	
+	public ArrayList getPairs() {
+		ArrayList list = new ArrayList();
+		HashMap matchedIndices = new HashMap();
+		for(int i =0; i<hand.size();i++) {
+			Card search = hand.get(i);
+			for(int c = 0;c<hand.size();c++) {
+				if(c != i && search.getSuit().equals(hand.get(c).getSuit())) {
+					if(matchedIndices.containsKey(i) || matchedIndices.containsKey(c)) {
+						continue;
+					}
+					matchedIndices.put(i, true);
+					matchedIndices.put(c, true);
+					Card[] cards = new Card[2];
+					cards[0] = search;
+					cards[1] = hand.get(c);
+					list.add(cards);
+					break;
+				}
+			}
+		}
+		return list;
 	}
 	
 	public void giveCard(Card c){//adds the new given card to the hand

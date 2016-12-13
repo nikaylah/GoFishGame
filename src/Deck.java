@@ -7,7 +7,7 @@ public class Deck{
 	//creates the size of the deck which is a maximum of 36 cards
 	
 	//creates an array of strings called suit that holds the names of each card name
-	public String[] suit = new String[]{"shark","jellyfish","octopus","seahorse", "clownfish", "angularfish", "seaturtle", "crab", "dolphin"};
+	public String[] suit = new String[]{"shark","jellyfish","octopus","seahorse", "clownfish", "anglerfish", "seaturtle", "crab", "dolphin"};
 	
 //	public Card[] discardPile = new Card[36];
 //	public int discardPileSize;
@@ -56,18 +56,6 @@ public class Deck{
 		return deck.toString();
 	}
 
-	public boolean hasPair(String suit) {
-		
-		int counter=0;
-		for( int i =0; i< deck.size(); i++)
-		{
-			if(deck.get(i).equals(suit)){
-				counter++;
-		}
-			if(counter == 2){
-				return true;
-		}
-		}
-		return false;
-	}
+	int counter = 0;
+	
 }
