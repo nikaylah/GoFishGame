@@ -1,13 +1,18 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Human extends Player {
 
 	@Override
-	public int play(Scanner scanner, int numberOfPlayers) {
+	public int play(Scanner scanner, int numberOfPlayers, boolean canPutDown) {
+		String op = "0";
+		if(canPutDown) {
 		System.out.println("To play a card (type 0), or (type 1) to put down matches.");
+		op = scanner.nextLine();
+		}
 		while(true) {
-		if (scanner.nextLine().equals("0")) {
+		if (op.equals("0")) {
 			while (true) {
 
 				// Play card
@@ -42,10 +47,22 @@ public class Human extends Player {
 				System.out.println("You don't have any matches to put down.");
 				
 			}
-			Card[] realMatches = new Card[matches.size()/2];
-			
-			System.out.println("Below is a list of your matches; please select one:\n");
-			
+			Card[] realMatches = new Card[matches.size()];
+			for(int i = 0;i<realMatches.length;i++) {
+				realMatches[i] = ((Card[]) matches.get(i))[0];
+			}
+			System.out.println("Below is a list of your matches; please select one (please enter an integer between 1 and "+realMatches.length+"):\n");
+			System.out.println(Arrays.toString(realMatches));
+			try {
+				int eger = Integer.parseInt(scanner.nextLine());
+				if(!(eger > 0 && eger <= realMatches.length)) {
+					System.out.println("Error. You must pick a value between 1 and "+realMatches.length+".");
+				}else {
+					return 0 | getHand().indexOf(realMatches[eger -1]) << 1; //Put down the specified pair
+				}
+			}catch(Throwable err) {
+				System.out.println("Invalid integer input. You were supposed to type a valid integer.");
+			}
 		}
 		}
 

@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.function.Predicate;
 
 public class GameController {
 
@@ -47,7 +48,7 @@ public class GameController {
 
 		// create a print player that shows each persons card so that we know
 		// who is winning---looping construct
-		
+
 		System.out.println("Current size of the Deck:" + d1.getSize());
 		System.out.println("***************************************");
 		System.out.println("***************************************");
@@ -56,19 +57,34 @@ public class GameController {
 		while (true) {
 
 			System.out.println();
-			//System.out.println(player(i));
+			// System.out.println(player(i));
 			System.out.println();
 			System.out.println("Below is your hand: ");
 			System.out.println(players[currentPlayer].getHand()); // current
 																	// hand
 			System.out.println();
 			System.out.println("-------------------------------------------------");
-			System.out.println("----- Player "+currentPlayer+": do you want to *PLAY* or *PUT DOWN MATCHES*?------");
+			System.out
+					.println("----- Player " + currentPlayer + ": do you want to *PLAY* or *PUT DOWN MATCHES*?------");
 
 			boolean hadTurn = false;
+			boolean putdownAvailable = true;
 			while (!hadTurn) {
 				// Have player take turn
-				int action = players[currentPlayer].play(input, players.length);
+				if(players[currentPlayer].getHand().size() == 0) {
+					System.out.println("Game over!");
+					int maxScore = 0;
+					Player maxPlayer = players[0];
+					for(Player i:players) {
+						if(i.score>maxScore) {
+							maxPlayer = i;
+							maxScore = i.score;
+						}
+					}
+					System.out.println("Player "+maxPlayer.playerIndex+" wins with "+maxPlayer.score+" points!");
+					return;
+				}
+				int action = players[currentPlayer].play(input, players.length,putdownAvailable);
 				
 				if ((action & 1) != 0) { // checks the rightmost bit. Anding
 											// this
@@ -106,7 +122,8 @@ public class GameController {
 					System.out.println("Player " + currentPlayer + " plays a " + card.getSuit() + ".");
 					if (players[playerno].contains(card)) {
 						players[currentPlayer].giveCard(players[playerno].getCard(card));
-						System.out.println("Congratulations! You guessed right!\nThe matching card was "+card.getSuit()+".");
+						System.out.println(
+								"Congratulations! You guessed right!\nThe matching card was " + card.getSuit() + ".");
 					} else {
 						System.out.println("Go fish!");
 						Card ocard = d1.getCard();
@@ -124,21 +141,17 @@ public class GameController {
 							return;
 						}
 						players[currentPlayer].giveCard(ocard);
-						
+
 					}
 				} else {
-					Scanner arr = new Scanner(System.in);
-					ArrayList pairs = players[currentPlayer].getPairs();
-					if (pairs.size() == 0) {
-						System.out.println("You cannot put down pairs. You don't have any.");
-					} else {
-						players[currentPlayer].score += pairs.size();
-						for (int i = 0; i < pairs.size(); i++) {
-							players[currentPlayer].getHand().remove(((Card[]) pairs.get(i))[0]);
-							players[currentPlayer].getHand().remove(((Card[]) pairs.get(i))[1]);
-						}
-						System.out.println("Player "+currentPlayer+" has "+players[currentPlayer].score+" points.");
-					} 
+					int cardno = action >> 1;
+					Card card = players[currentPlayer].getHand().get(cardno);
+				    players[currentPlayer].getCard(card);
+				    players[currentPlayer].getCard(card);
+					players[currentPlayer].score++;
+					System.out.println("Player " + currentPlayer + " has " + players[currentPlayer].score + " points.");
+					putdownAvailable = false;
+					hadTurn = true;
 				}
 
 			} // end while
