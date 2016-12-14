@@ -84,9 +84,7 @@ public abstract class Player {
 		}
 		return false;
 	}
-//	public char play(){
-//		
-//	}
+
 	public String toString(){
 		return hand.toString();
 	}

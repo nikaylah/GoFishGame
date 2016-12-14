@@ -42,23 +42,28 @@ public class GameController {
 		}
 
 		System.out.println();
-		System.out.println("Start");
+		System.out.println("*************Start****************");
 		System.out.println();
 
 		// create a print player that shows each persons card so that we know
 		// who is winning---looping construct
-
-		System.out.print("Current size of the Deck: " + d1.getSize());
-
+		
+		System.out.println("Current size of the Deck:" + d1.getSize());
+		System.out.println("***************************************");
+		System.out.println("***************************************");
 		int currentPlayer = 0;
 
 		while (true) {
 
 			System.out.println();
+			//System.out.println(player(i));
+			System.out.println();
+			System.out.println("Below is your hand: ");
 			System.out.println(players[currentPlayer].getHand()); // current
 																	// hand
+			System.out.println();
 			System.out.println("------------------------------------------------------");
-			System.out.println("-----Ready to Play?------");
+			System.out.println("-----Do you want to *PLAY* or *PUT DOWN MATCHES*?------");
 
 			boolean hadTurn = false;
 			while (!hadTurn) {

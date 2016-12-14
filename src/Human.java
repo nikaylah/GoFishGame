@@ -5,11 +5,12 @@ public class Human extends Player {
 
 	@Override
 	public int play(Scanner scanner, int numberOfPlayers) {
-		System.out.println("To play a card (type 0), or type 1 to put down matches.");
+		System.out.println("To play a card (type 0), or (type 1) to put down matches.");
 		if (scanner.nextLine().equals("0")) {
 			while (true) {
 
 				// Play card
+				
 				System.out.println("\nPlease type the index (starting from one) of the card you want to use.");
 				int index = Integer.parseInt(scanner.nextLine());
 				System.out.println(
