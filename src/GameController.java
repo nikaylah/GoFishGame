@@ -62,8 +62,8 @@ public class GameController {
 			System.out.println(players[currentPlayer].getHand()); // current
 																	// hand
 			System.out.println();
-			System.out.println("------------------------------------------------------");
-			System.out.println("-----Do you want to *PLAY* or *PUT DOWN MATCHES*?------");
+			System.out.println("-------------------------------------------------");
+			System.out.println("----- Player "+currentPlayer+": do you want to *PLAY* or *PUT DOWN MATCHES*?------");
 
 			boolean hadTurn = false;
 			while (!hadTurn) {
@@ -106,10 +106,9 @@ public class GameController {
 					System.out.println("Player " + currentPlayer + " plays a " + card.getSuit() + ".");
 					if (players[playerno].contains(card)) {
 						players[currentPlayer].giveCard(players[playerno].getCard(card));
-						System.out.println("Congratulations! You guessed right!");
+						System.out.println("Congratulations! You guessed right!\nThe matching card was "+card.getSuit()+".");
 					} else {
 						System.out.println("Go fish!");
-						// return deck.remove(0);
 						Card ocard = d1.getCard();
 						if (ocard == null) {
 							int maxScore = 0;
